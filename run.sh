@@ -14,4 +14,7 @@
 # - The following cmd will run repo2docker using a git repo 
 #   that you have cloned onto your system
 
-repo2docker --user-id 1000 -v $PWD:/home/$USER/data .
+# repo2docker --user-id 1000 -v $PWD:/home/$USER/data .
+
+jupyter-repo2docker --image-name datascience --no-run --user-id=$UID --user-name=$USER --Repo2Docker.platform=linux/amd64 --target-repo-dir=/home/$USER/.cache --build-arg platform="linux/amd64" .
+docker run -it -p 8888:8888 datascience:latest jupyter lab --ip 0.0.0.0 --NotebookApp.token='' --NotebookApp.password=''
